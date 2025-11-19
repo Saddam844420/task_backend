@@ -1,0 +1,22 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type TaxDetailModel {
+  id: String!
+  taxType: String!
+  taxNumber: String!
+}
+
+type CompanyModel {
+  id: String!
+  name: String!
+  address: String!
+  email: String!
+  phone: String!
+  taxDetails: [TaxDetailModel!]!
+}
+
+type Query {
+  getCompanies: [CompanyModel!]!
+}

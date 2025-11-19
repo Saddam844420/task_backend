@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  USER
+  MANAGER
+}
+
+model Company{
+  id Int @id @default(autoincrement())
+  name String
+  address String
+  email String @unique
+  phone String
+  taxDetail TaxDetail[]
+  user User[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TaxDetail{
+  id Int @id @default(autoincrement())
+  company Company @relation(fields: [compnayId],references: [id])
+  compnayId Int
+  taxType String
+  taxNumber String
+
+}
+
+model User{
+  id Int @id @default(autoincrement())
+  name String
+  email String @unique
+  password String
+  role UserRole  @default(USER)
+  isMailVerified Boolean @default(false)
+  company Company @relation(fields: [companyId],references: [id])
+  companyId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
