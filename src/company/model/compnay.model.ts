@@ -13,7 +13,7 @@ export class CompanyModel{
     email:string;
     @Field()
     phone:string;
-    @Field(() => [TaxDetailModel])
+    @Field(() => [TaxDetailModel], { nullable: true })
     taxDetails: TaxDetailModel[];
 
 }

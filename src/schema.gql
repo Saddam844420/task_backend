@@ -14,9 +14,23 @@ type CompanyModel {
   address: String!
   email: String!
   phone: String!
-  taxDetails: [TaxDetailModel!]!
+  taxDetails: [TaxDetailModel!]
+}
+
+type DepartmentModel {
+  department: String!
+  id: String!
 }
 
 type Query {
   getCompanies: [CompanyModel!]!
+  getAllDepartment: [DepartmentModel!]!
+}
+
+type Mutation {
+  createDepartment(department: DepartmentDto!): DepartmentModel!
+}
+
+input DepartmentDto {
+  department: String!
 }

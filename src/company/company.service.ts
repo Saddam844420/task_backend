@@ -37,7 +37,7 @@ export class CompanyService {
     });
 
     // Step 3 — Generate Admin user
-    const saltOrRounds = 10;
+    const saltOrRounds = await bcrypt.genSalt();
     const rawPassword = Math.random().toString(36).slice(-8);
     const hashedPassword = await bcrypt.hash(rawPassword, saltOrRounds);
 

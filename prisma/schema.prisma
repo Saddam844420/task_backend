@@ -28,6 +28,7 @@ model Company{
   phone String
   taxDetail TaxDetail[]
   user User[]
+  department Department[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -52,4 +53,13 @@ model User{
   companyId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Department{
+  id Int @id @default(autoincrement())
+  company Company @relation(fields: [companyId],references: [id])
+  companyId Int
+  name String
+  createdAt DateTime @default(now())
+  updtaedAt DateTime @updatedAt
 }
