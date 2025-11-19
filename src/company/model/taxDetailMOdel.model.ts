@@ -9,6 +9,5 @@ export class TaxDetailModel{
     taxType :string;
     @Field()
     taxNumber:string;
-   
-
+    
 }

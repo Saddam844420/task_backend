@@ -1,4 +1,4 @@
-import { InputType,Field } from "@nestjs/graphql";
+import { InputType,Field, } from "@nestjs/graphql";
 import { TaxDetailInputDto } from "./TaxDetailInput.dto";
 @InputType()
 export class CreateCompanyDto{
@@ -10,6 +10,8 @@ export class CreateCompanyDto{
     email:string;
     @Field()
     phone:string;
+    @Field()
+    adminName:string;
 
     @Field(() => [TaxDetailInputDto])
     taxDetails: TaxDetailInputDto[];
