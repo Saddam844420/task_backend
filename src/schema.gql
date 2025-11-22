@@ -6,6 +6,7 @@ type TaxDetailModel {
   id: String!
   taxType: String!
   taxNumber: String!
+  companyId: String!
 }
 
 type CompanyModel {
@@ -14,12 +15,13 @@ type CompanyModel {
   address: String!
   email: String!
   phone: String!
-  taxDetails: [TaxDetailModel!]
+  taxDetail: [TaxDetailModel!]
 }
 
 type DepartmentModel {
-  department: String!
+  name: String!
   id: String!
+  companyId: String!
 }
 
 type Query {

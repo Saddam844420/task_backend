@@ -13,7 +13,8 @@ export class CompanyService {
         return await this.prisma.company.findMany({
             include: {
                 taxDetail: true,
-                user:true
+                user:true,
+                department:true
             },
         });
     }

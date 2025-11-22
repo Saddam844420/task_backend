@@ -1,15 +1,17 @@
 import { ObjectType,Field } from "@nestjs/graphql";
 
 @ObjectType()
-export class TaxDetailModel{
+
+export class UserModel{
+    @Field()
+    name:string
+    
+    @Field()
+    email:string
 
     @Field()
-    id:string;
+    role:string
+
     @Field()
-    taxType :string;
-    @Field()
-    taxNumber:string;
-    @Field()
-    companyId:string
-    
+    isMailVerified:boolean
 }

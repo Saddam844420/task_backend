@@ -3,7 +3,9 @@ import { ObjectType,Field,Args } from "@nestjs/graphql";
 
 export class DepartmentModel{
     @Field()
-    department:string
+    name:string
     @Field()
     id:string
+    @Field()
+    companyId:string
 }
