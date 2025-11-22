@@ -53,6 +53,14 @@ export class CompanyService {
       },
     });
 
+ return this.prisma.company.findUnique({
+  where:{id:company.id},
+  include:{
+    user:true,
+    taxDetail:true
+  }
+ })
+
     // FINAL SUCCESS RETURN FORMAT
     return {
       status: true,

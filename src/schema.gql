@@ -6,7 +6,14 @@ type TaxDetailModel {
   id: String!
   taxType: String!
   taxNumber: String!
-  companyId: String!
+}
+
+type UserModel {
+  id: Float!
+  name: String!
+  email: String!
+  role: String!
+  isMailVerified: Boolean!
 }
 
 type CompanyModel {
@@ -16,6 +23,7 @@ type CompanyModel {
   email: String!
   phone: String!
   taxDetail: [TaxDetailModel!]
+  user: [UserModel!]
 }
 
 type DepartmentModel {
@@ -30,7 +38,22 @@ type Query {
 }
 
 type Mutation {
+  createCompany(data: CreateCompanyDto!): CompanyModel!
   createDepartment(department: DepartmentDto!): DepartmentModel!
+}
+
+input CreateCompanyDto {
+  name: String!
+  address: String!
+  email: String!
+  phone: String!
+  adminName: String!
+  taxDetails: [TaxDetailInputDto!]!
+}
+
+input TaxDetailInputDto {
+  taxType: String!
+  taxNumber: String!
 }
 
 input DepartmentDto {
